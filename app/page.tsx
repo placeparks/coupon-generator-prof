@@ -131,14 +131,9 @@ export default function HomePage() {
   }
 
   return (
-    <main style={{ minHeight: '100vh', padding: '32px 16px' }}>
-      <div style={{ maxWidth: 1180, margin: '0 auto' }}>
-        <section style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.1fr) minmax(320px, 0.9fr)',
-          gap: 24,
-          alignItems: 'start'
-        }}>
+    <main className="coupon-admin-page">
+      <div className="coupon-admin-shell">
+        <section className="coupon-admin-hero">
           <div style={{
             background: 'rgba(255,255,255,0.92)',
             border: '1px solid rgba(148,163,184,0.28)',
@@ -146,7 +141,7 @@ export default function HomePage() {
             padding: 28,
             boxShadow: '0 24px 80px rgba(15,23,42,0.08)'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'start', marginBottom: 24 }}>
+            <div className="coupon-admin-header">
               <div>
                 <div style={{
                   display: 'inline-flex',
@@ -175,17 +170,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={loadCoupons}
-                style={{
-                  borderRadius: 999,
-                  border: '1px solid #cbd5e1',
-                  background: '#fff',
-                  padding: '12px 16px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
+                className="coupon-admin-refresh"
               >
                 <RefreshCcw size={15} className={loading ? 'spin' : ''} />
                 Refresh
@@ -193,7 +178,7 @@ export default function HomePage() {
             </div>
 
             <form onSubmit={generateCoupons}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+              <div className="coupon-admin-grid coupon-admin-grid-2">
                 <Field label="Admin token" icon={<KeyRound size={16} />}>
                   <input
                     type="password"
@@ -214,7 +199,7 @@ export default function HomePage() {
                 </Field>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 16 }}>
+              <div className="coupon-admin-grid coupon-admin-grid-3">
                 <Field label="Prefix">
                   <input
                     type="text"
@@ -246,7 +231,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+              <div className="coupon-admin-grid coupon-admin-grid-2">
                 <Field label="For client / user">
                   <input
                     type="text"
@@ -267,13 +252,13 @@ export default function HomePage() {
                 </Field>
               </div>
 
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <button type="submit" disabled={submitting} style={primaryButtonStyle}>
+              <div className="coupon-admin-actions">
+                <button type="submit" disabled={submitting} style={primaryButtonStyle} className="coupon-admin-action-button">
                   <ShieldCheck size={16} />
                   {submitting ? 'Generating...' : 'Generate coupons'}
                 </button>
                 {latestBatch.length > 0 && (
-                  <button type="button" onClick={() => copyCodes(latestBatch.map((item) => item.code))} style={secondaryButtonStyle}>
+                  <button type="button" onClick={() => copyCodes(latestBatch.map((item) => item.code))} style={secondaryButtonStyle} className="coupon-admin-action-button">
                     <Copy size={16} />
                     Copy latest batch
                   </button>
@@ -447,7 +432,7 @@ function Field({
   icon?: React.ReactNode
 }) {
   return (
-    <label style={{ display: 'block' }}>
+    <label className="coupon-admin-field">
       <span style={smallLabelStyle}>{label}</span>
       <div style={{ position: 'relative', marginTop: 8 }}>
         {icon && (
@@ -478,6 +463,7 @@ function inputStyle(withIcon?: boolean): React.CSSProperties {
     fontSize: 15,
     color: '#0f172a',
     outline: 'none',
+    minHeight: 52,
   }
 }
 
