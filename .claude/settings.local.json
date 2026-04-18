@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes --offline tsc --noEmit)",
+      "Bash(node -e \"const XLSX=require\\('xlsx'\\);const wb=XLSX.utils.book_new\\(\\);const ws=XLSX.utils.aoa_to_sheet\\([['email'],['kainatalikhosa@gmail.com'],['kainatkhankhosa@gmail.com']]\\);XLSX.utils.book_append_sheet\\(wb,ws,'Sheet1'\\);XLSX.writeFile\\(wb,'sample-emails.xlsx'\\);console.log\\('written'\\);\")",
+      "Bash(npx --offline tsc --noEmit)"
+    ]
+  }
+}
